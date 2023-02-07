@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+    
+        <link rel="stylesheet" href="assets/style.css">
+
+        <script type="text/javascript" src="js/sudoku.js" crossorigin="anonymous"></script>
+
+        <title>Sudoku</title>
+    </head>
+
+    <body onload="draw()"> 
+        <h1>Sudoku</h1>
+        <h4>the idk what im doing with my life version</h4>
+
+        <div class="flexbox">
+            <div id="puzzle"></div>
+            <div>
+                <button onclick="newBoard();">Populate</button>
+                <button onclick="saveBoard();">Save Edit</button>
+                <button onclick="resetBoard();">Reset</button>
+                <button onclick="trySolve();">Solve</button>
+                <br>
+                <span id="time"></span><br>
+                <span id="backtracks"></span>
+            </div>
+        </div>
+    </body>
+
+</html>
