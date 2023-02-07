@@ -44,8 +44,7 @@ function draw() {
         input.setAttribute("type", "number");
         input.setAttribute("min", "1");
         input.setAttribute("max", "9");
-        input.addEventListener(onclick, displayPossible)
-        input.classList.add("odd_color")
+        input.classList.add("odd_color");
 
         if (defaultBoard[ix] != 0) {
             input.value = defaultBoard[ix];
@@ -71,20 +70,23 @@ function clearBoard() {
     });
 }
 
-function repopulate() {
+var solvingBoard = defaultBoard;
+function writeNewBoard(value, color) {
     var allInputs = document.querySelectorAll("input");
 
     for (var ix=0; ix < allInputs.length; ix++) {
         if (defaultBoard[ix] != 0) {
-            allInputs[ix].value = defaultBoard[ix];
-            allInputs[ix].classList.add("generated_color")
+            allInputs[ix].value = value[ix];
+            solvingBoard[ix] = value[ix];
+            if (color) {            
+                allInputs[ix].classList.add("generated_color")
+            }
         }
     }
 }
 
-function writeNewBoard(index, value) {
-    var allInputs = document.querySelectorAll("input");
-    allInputs[index].value = value;
+function newBoard() {
+    writeNewBoard(defaultBoard, true)
 }
 
 function isPossible(index, value) {
@@ -129,14 +131,7 @@ function getPossible(index) {
     return possible
 }
 
-function displayPossible() {
-    var span = document.getElementById("possibles");
-    span.innerHTML = getPossible()
 
-
-}
-
-var solvingBoard = defaultBoard;
 
 function trySolve() {
     var numberOfBacktracks = 0;
@@ -164,6 +159,9 @@ function trySolve() {
     }
 
     if (solve(0)) {
-        writeToBoard()
+        writeNewBoard(solvingBoard, false)
     }
+
+    document.getElementById("time").innerHTML = `Time Elapsed: ${Date.now() - time}ms`
+    document.getElementById("backtracks").innerHTML = `Backtracks: ${numberOfBacktracks}`
 }

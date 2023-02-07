@@ -19,9 +19,10 @@ button {
     display: block;
 }
 
-#rightside {
-    float:right;
-    margin-right: 100em;
+label, select {
+    display:block;
+    text-align: center;
+    width: 90px;
 }
 
 #puzzle {
@@ -49,6 +50,11 @@ button {
 
 .generated_color {
     color:blue;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
 }
 
 /* hide arrows from input, non-standard but this works */

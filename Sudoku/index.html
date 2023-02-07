@@ -15,20 +15,17 @@
         <h1>Sudoku</h1>
         <h4>the idk what im doing with my life version</h4>
 
-        <div id="rightside">
-            <button onclick="trySolve();">Solve</button>
-            <button onclick="clearBoard();">Clear</button>
-            <button onclick="repopulate();">Refill</button>
-            <br>
-            <p>Possible: <span id="possibles"></span></p>
+        <div class="flexbox">
+            <div id="puzzle"></div>
+            <div>
+                <button onclick="newBoard();">Populate</button>
+                <button onclick="trySolve();">Solve</button>
+                <button onclick="clearBoard();">Clear</button>
+                <br>
+                <span id="time"></span><br>
+                <span id="backtracks"></span>
+            </div>
         </div>
-
-        <div id="puzzle">
-
-        </div>
-
-        
-
     </body>
 
 </html>
